@@ -130,6 +130,30 @@
       border-color: #e57373;
     }
 
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: #eaecf0;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: #5c6bc0;
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+
     .empty {
       text-align: center;
       color: #bbb;
@@ -141,6 +165,12 @@
 <body>
   <div class="card">
     <h1>ToDoリスト</h1>
+    <div class="progress" id="progress-area" style="display:none">
+      <span id="progress-text"></span>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
     <div class="input-row">
       <input type="text" id="task-input" placeholder="タスクを入力..." maxlength="100">
       <button onclick="addTask()">追加</button>
@@ -154,6 +184,17 @@
     function render() {
       const list = document.getElementById('task-list');
       list.replaceChildren();
+
+      const total = tasks.length;
+      const done = tasks.filter(t => t.done).length;
+      const progressArea = document.getElementById('progress-area');
+      if (total > 0) {
+        progressArea.style.display = 'flex';
+        document.getElementById('progress-text').textContent = `${done} / ${total} 完了`;
+        document.getElementById('progress-fill').style.width = `${(done / total) * 100}%`;
+      } else {
+        progressArea.style.display = 'none';
+      }
 
       if (tasks.length === 0) {
         const empty = document.createElement('p');
