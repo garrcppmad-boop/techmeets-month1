@@ -246,6 +246,10 @@
       render();
     }
 
+    document.getElementById('task-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') addTask();
+    });
+
     render();
   </script>
 </body>
