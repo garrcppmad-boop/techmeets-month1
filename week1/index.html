@@ -187,6 +187,7 @@
     function addTask() {
       const input = document.getElementById('task-input');
       const text = input.value.trim();
+      if (!text) return;
 
       tasks.push({ text, done: false });
       input.value = '';
