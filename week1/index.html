@@ -154,6 +154,29 @@
       transition: width 0.3s ease;
     }
 
+    .task-due {
+      font-size: 0.78rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .task-due.overdue {
+      background: #ffeaea;
+      color: #e57373;
+    }
+
+    .task-due.soon {
+      background: #fff8e1;
+      color: #f9a825;
+    }
+
+    .task-due.normal {
+      background: #e8eaf6;
+      color: #5c6bc0;
+    }
+
     .empty {
       text-align: center;
       color: #bbb;
@@ -173,6 +196,7 @@
     </div>
     <div class="input-row">
       <input type="text" id="task-input" placeholder="タスクを入力..." maxlength="100">
+      <input type="date" id="due-input">
       <button onclick="addTask()">追加</button>
     </div>
     <ul id="task-list"></ul>
@@ -219,6 +243,21 @@
         deleteBtn.textContent = '削除';
         deleteBtn.onclick = () => deleteTask(index);
 
+        if (task.due) {
+          const today = new Date().toISOString().slice(0, 10);
+          const due = document.createElement('span');
+          due.className = 'task-due';
+          due.textContent = task.due;
+          if (task.due < today) {
+            due.classList.add('overdue');
+          } else if (task.due === today) {
+            due.classList.add('soon');
+          } else {
+            due.classList.add('normal');
+          }
+          li.appendChild(due);
+        }
+
         li.appendChild(label);
         li.appendChild(deleteBtn);
         list.appendChild(li);
@@ -230,8 +269,10 @@
       const text = input.value.trim();
       if (!text) return;
 
-      tasks.push({ text, done: false });
+      const due = document.getElementById('due-input').value;
+      tasks.push({ text, done: false, due });
       input.value = '';
+      document.getElementById('due-input').value = '';
       input.focus();
       render();
     }
