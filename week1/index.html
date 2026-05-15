@@ -192,7 +192,6 @@
     }
 
     #clear-btn {
-      display: none;
       margin-top: 16px;
       width: 100%;
       padding: 8px;
@@ -205,9 +204,15 @@
       transition: background 0.15s, border-color 0.15s;
     }
 
-    #clear-btn:hover {
+    #clear-btn:hover:not(:disabled) {
       background: #ffeaea;
       border-color: #e57373;
+    }
+
+    #clear-btn:disabled {
+      color: #bbb;
+      border-color: #e8e8e8;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -250,7 +255,7 @@
         statsArea.style.display = 'none';
       }
 
-      document.getElementById('clear-btn').style.display = done > 0 ? 'block' : 'none';
+      document.getElementById('clear-btn').disabled = done === 0;
 
       const progressArea = document.getElementById('progress-area');
       if (total > 0) {
