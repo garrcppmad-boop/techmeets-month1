@@ -88,9 +88,10 @@
       align-items: center;
       gap: 12px;
       padding: 12px 14px;
-      background: #f8f9fb;
-      border-radius: 10px;
-      border: 1.5px solid #eaecf0;
+      background: #fff;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       transition: opacity 0.2s;
     }
 
@@ -183,6 +184,31 @@
       font-size: 0.9rem;
       padding: 24px 0;
     }
+
+    #stats-area {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    #clear-btn {
+      display: none;
+      margin-top: 16px;
+      width: 100%;
+      padding: 8px;
+      background: none;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #e57373;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    #clear-btn:hover {
+      background: #ffeaea;
+      border-color: #e57373;
+    }
   </style>
 </head>
 <body>
@@ -194,12 +220,16 @@
         <div class="progress-bar-fill" id="progress-fill"></div>
       </div>
     </div>
+    <div id="stats-area" style="display:none">
+      <span id="stats-text"></span>
+    </div>
     <div class="input-row">
       <input type="text" id="task-input" placeholder="タスクを入力..." maxlength="100">
       <input type="date" id="due-input">
       <button onclick="addTask()">追加</button>
     </div>
     <ul id="task-list"></ul>
+    <button id="clear-btn" onclick="clearCompleted()">完了済みを一括削除</button>
   </div>
 
   <script>
@@ -211,6 +241,17 @@
 
       const total = tasks.length;
       const done = tasks.filter(t => t.done).length;
+
+      const statsArea = document.getElementById('stats-area');
+      if (total > 0) {
+        statsArea.style.display = 'block';
+        document.getElementById('stats-text').textContent = `残り${total - done}件 / 全${total}件`;
+      } else {
+        statsArea.style.display = 'none';
+      }
+
+      document.getElementById('clear-btn').style.display = done > 0 ? 'block' : 'none';
+
       const progressArea = document.getElementById('progress-area');
       if (total > 0) {
         progressArea.style.display = 'flex';
@@ -284,6 +325,11 @@
 
     function deleteTask(index) {
       tasks.splice(index, 1);
+      render();
+    }
+
+    function clearCompleted() {
+      tasks.splice(0, tasks.length, ...tasks.filter(t => !t.done));
       render();
     }
 
