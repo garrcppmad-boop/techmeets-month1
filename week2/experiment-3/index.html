@@ -261,7 +261,7 @@
   </div>
 
   <script>
-    const tasks = [];
+    const tasks = JSON.parse(localStorage.getItem('todo-tasks') || '[]');
     let currentFilter = 'all';
     let currentKeyword = '';
 
@@ -348,6 +348,10 @@
       });
     }
 
+    function saveTasks() {
+      localStorage.setItem('todo-tasks', JSON.stringify(tasks));
+    }
+
     function addTask() {
       const input = document.getElementById('task-input');
       const text = input.value.trim();
@@ -358,16 +362,19 @@
       input.value = '';
       document.getElementById('due-input').value = '';
       input.focus();
+      saveTasks();
       render();
     }
 
     function toggleTask(index) {
       tasks[index].done = !tasks[index].done;
+      saveTasks();
       render();
     }
 
     function deleteTask(index) {
       tasks.splice(index, 1);
+      saveTasks();
       render();
     }
 
