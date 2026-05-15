@@ -98,6 +98,11 @@
       opacity: 0.55;
     }
 
+    .task-item.overdue {
+      background: #fff5f5;
+      border-color: #e57373;
+    }
+
     .task-label {
       flex: 1;
       font-size: 0.95rem;
@@ -313,8 +318,10 @@
       }
 
       filtered.forEach(({ task, index }) => {
+        const today = new Date().toISOString().slice(0, 10);
+        const isOverdue = task.due && task.due < today && !task.done;
         const li = document.createElement('li');
-        li.className = 'task-item' + (task.done ? ' done' : '');
+        li.className = 'task-item' + (task.done ? ' done' : '') + (isOverdue ? ' overdue' : '');
 
         const label = document.createElement('span');
         label.className = 'task-label';
@@ -328,7 +335,6 @@
         deleteBtn.onclick = () => deleteTask(index);
 
         if (task.due) {
-          const today = new Date().toISOString().slice(0, 10);
           const due = document.createElement('span');
           due.className = 'task-due';
           due.textContent = task.due;
