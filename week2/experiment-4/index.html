@@ -46,7 +46,7 @@
     .card {
       background: #1c1c2e;
       border-radius: 16px;
-      padding: 24px;
+      overflow: hidden;
       width: 280px;
       flex-shrink: 0;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -61,12 +61,18 @@
     .cover {
       width: 100%;
       aspect-ratio: 1;
-      border-radius: 10px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
+      overflow: hidden;
+    }
+
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 20px;
     }
 
     .card-genre {
@@ -120,75 +126,99 @@
   <div class="grid">
 
     <div class="card">
-      <div class="cover" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">🎸</div>
-      <div class="card-genre" style="color: #7c83fd;">Rock</div>
-      <div class="card-title">Bohemian Rhapsody</div>
-      <div class="card-artist">Queen</div>
-      <div class="card-divider"></div>
-      <div class="card-note">
-        オペラ・ロック・バラードが融合した6分間の叙事詩。何度聴いても飽きない構成の複雑さに脱帽する。
+      <div class="cover">
+        <img src="https://placehold.co/280x280/1a1a2e/7c83fd?text=Rock" alt="Bohemian Rhapsody">
       </div>
-      <span class="badge" style="background:#7c83fd22; color:#7c83fd;">1975</span>
+      <div class="card-body">
+        <div class="card-genre" style="color: #7c83fd;">Rock</div>
+        <div class="card-title">Bohemian Rhapsody</div>
+        <div class="card-artist">Queen</div>
+        <div class="card-divider"></div>
+        <div class="card-note">
+          オペラ・ロック・バラードが融合した6分間の叙事詩。何度聴いても飽きない構成の複雑さに脱帽する。
+        </div>
+        <span class="badge" style="background:#7c83fd22; color:#7c83fd;">1975</span>
+      </div>
     </div>
 
     <div class="card">
-      <div class="cover" style="background: linear-gradient(135deg, #0d2137, #0a3d62);">🎹</div>
-      <div class="card-genre" style="color: #00d2ff;">Jazz</div>
-      <div class="card-title">So What</div>
-      <div class="card-artist">Miles Davis</div>
-      <div class="card-divider"></div>
-      <div class="card-note">
-        モーダルジャズの幕開けとなった名曲。シンプルな2コード構成の中に無限の余白がある。
+      <div class="cover">
+        <img src="https://placehold.co/280x280/0d2137/00d2ff?text=Jazz" alt="So What">
       </div>
-      <span class="badge" style="background:#00d2ff22; color:#00d2ff;">1959</span>
+      <div class="card-body">
+        <div class="card-genre" style="color: #00d2ff;">Jazz</div>
+        <div class="card-title">So What</div>
+        <div class="card-artist">Miles Davis</div>
+        <div class="card-divider"></div>
+        <div class="card-note">
+          モーダルジャズの幕開けとなった名曲。シンプルな2コード構成の中に無限の余白がある。
+        </div>
+        <span class="badge" style="background:#00d2ff22; color:#00d2ff;">1959</span>
+      </div>
     </div>
 
     <div class="card">
-      <div class="cover" style="background: linear-gradient(135deg, #1a0533, #3b0764);">🎤</div>
-      <div class="card-genre" style="color: #c084fc;">Hip-Hop</div>
-      <div class="card-title">HUMBLE.</div>
-      <div class="card-artist">Kendrick Lamar</div>
-      <div class="card-divider"></div>
-      <div class="card-note">
-        Mike WiLL Made-Itのビートとケンドリックのリリシズムが完璧に噛み合った一曲。MVも含めて完成度が高い。
+      <div class="cover">
+        <img src="https://placehold.co/280x280/1a0533/c084fc?text=Hip-Hop" alt="HUMBLE.">
       </div>
-      <span class="badge" style="background:#c084fc22; color:#c084fc;">2017</span>
+      <div class="card-body">
+        <div class="card-genre" style="color: #c084fc;">Hip-Hop</div>
+        <div class="card-title">HUMBLE.</div>
+        <div class="card-artist">Kendrick Lamar</div>
+        <div class="card-divider"></div>
+        <div class="card-note">
+          Mike WiLL Made-Itのビートとケンドリックのリリシズムが完璧に噛み合った一曲。MVも含めて完成度が高い。
+        </div>
+        <span class="badge" style="background:#c084fc22; color:#c084fc;">2017</span>
+      </div>
     </div>
 
     <div class="card">
-      <div class="cover" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">🥁</div>
-      <div class="card-genre" style="color: #38bdf8;">Electronic</div>
-      <div class="card-title">Get Lucky</div>
-      <div class="card-artist">Daft Punk ft. Pharrell</div>
-      <div class="card-divider"></div>
-      <div class="card-note">
-        ループするギターリフとファンキーなグルーヴが永遠に心地よい。夏の夜に必ず聴きたくなる曲。
+      <div class="cover">
+        <img src="https://placehold.co/280x280/0f2027/38bdf8?text=Electronic" alt="Get Lucky">
       </div>
-      <span class="badge" style="background:#38bdf822; color:#38bdf8;">2013</span>
+      <div class="card-body">
+        <div class="card-genre" style="color: #38bdf8;">Electronic</div>
+        <div class="card-title">Get Lucky</div>
+        <div class="card-artist">Daft Punk ft. Pharrell</div>
+        <div class="card-divider"></div>
+        <div class="card-note">
+          ループするギターリフとファンキーなグルーヴが永遠に心地よい。夏の夜に必ず聴きたくなる曲。
+        </div>
+        <span class="badge" style="background:#38bdf822; color:#38bdf8;">2013</span>
+      </div>
     </div>
 
     <div class="card">
-      <div class="cover" style="background: linear-gradient(135deg, #1a0a00, #3d1a00);">🎷</div>
-      <div class="card-genre" style="color: #fb923c;">Soul / R&B</div>
-      <div class="card-title">Superstition</div>
-      <div class="card-artist">Stevie Wonder</div>
-      <div class="card-divider"></div>
-      <div class="card-note">
-        あのクラビネットのリフを聴いた瞬間に体が動き出す。スティーヴィーの天才性が詰まったグルーヴ。
+      <div class="cover">
+        <img src="https://placehold.co/280x280/1a0a00/fb923c?text=Soul" alt="Superstition">
       </div>
-      <span class="badge" style="background:#fb923c22; color:#fb923c;">1972</span>
+      <div class="card-body">
+        <div class="card-genre" style="color: #fb923c;">Soul / R&B</div>
+        <div class="card-title">Superstition</div>
+        <div class="card-artist">Stevie Wonder</div>
+        <div class="card-divider"></div>
+        <div class="card-note">
+          あのクラビネットのリフを聴いた瞬間に体が動き出す。スティーヴィーの天才性が詰まったグルーヴ。
+        </div>
+        <span class="badge" style="background:#fb923c22; color:#fb923c;">1972</span>
+      </div>
     </div>
 
     <div class="card">
-      <div class="cover" style="background: linear-gradient(135deg, #0a1f0a, #14532d);">🎻</div>
-      <div class="card-genre" style="color: #4ade80;">Classical</div>
-      <div class="card-title">Spring (Four Seasons)</div>
-      <div class="card-artist">Antonio Vivaldi</div>
-      <div class="card-divider"></div>
-      <div class="card-note">
-        第一楽章の躍動感は何世紀経っても色あせない。バロック音楽の楽しさをはじめて教えてくれた曲。
+      <div class="cover">
+        <img src="https://placehold.co/280x280/0a1f0a/4ade80?text=Classical" alt="Spring (Four Seasons)">
       </div>
-      <span class="badge" style="background:#4ade8022; color:#4ade80;">1725</span>
+      <div class="card-body">
+        <div class="card-genre" style="color: #4ade80;">Classical</div>
+        <div class="card-title">Spring (Four Seasons)</div>
+        <div class="card-artist">Antonio Vivaldi</div>
+        <div class="card-divider"></div>
+        <div class="card-note">
+          第一楽章の躍動感は何世紀経っても色あせない。バロック音楽の楽しさをはじめて教えてくれた曲。
+        </div>
+        <span class="badge" style="background:#4ade8022; color:#4ade80;">1725</span>
+      </div>
     </div>
 
   </div>
