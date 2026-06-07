@@ -1,6 +1,6 @@
 <?php
 $errors = [];
-//
+//バリデーション
 $name = $email = $subject = $message = '';
 //フォームの各入力値を保持する。最初は空文字で初期化
 $submitted = false;
