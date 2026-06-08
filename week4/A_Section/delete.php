@@ -8,10 +8,9 @@ if ($id === 0) {
     exit;
 }
 
-// POSTで送信された場合 → 実際に削除する
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = getDBConnection();
-    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt = $conn->prepare("DELETE FROM posts WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
@@ -20,16 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// GETで呼ばれた場合 → ユーザー情報を取得して確認ページを表示する
 $conn = getDBConnection();
-$stmt = $conn->prepare("SELECT username, email FROM users WHERE id = ?");
+$stmt = $conn->prepare("SELECT title, author FROM posts WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
-$user = $stmt->get_result()->fetch_assoc();
+$post = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 $conn->close();
 
-if (!$user) {
+if (!$post) {
     header('Location: index.php');
     exit;
 }
@@ -38,26 +36,26 @@ if (!$user) {
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ユーザー削除の確認</title>
+    <title>記事削除の確認</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="page-header">
-            <h1>ユーザーの削除</h1>
+            <h1>記事の削除</h1>
             <a href="index.php" class="back-link">← 一覧に戻る</a>
         </div>
 
         <div class="confirm-box">
-            <p class="confirm-message">以下のユーザーを削除してよろしいですか？</p>
+            <p class="confirm-message">以下の記事を削除してよろしいですか？この操作は取り消せません。</p>
             <table class="confirm-table">
                 <tr>
-                    <th>ユーザー名</th>
-                    <td><?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <th>タイトル</th>
+                    <td><?php echo htmlspecialchars($post['title'], ENT_QUOTES, 'UTF-8'); ?></td>
                 </tr>
                 <tr>
-                    <th>メールアドレス</th>
-                    <td><?php echo htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <th>投稿者</th>
+                    <td><?php echo htmlspecialchars($post['author'], ENT_QUOTES, 'UTF-8'); ?></td>
                 </tr>
             </table>
             <form method="POST" action="delete.php?id=<?php echo $id; ?>">

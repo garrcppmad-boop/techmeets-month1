@@ -1,0 +1,244 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ページヘッダー */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+}
+
+.back-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: #333;
+}
+
+/* ボタン */
+.btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover {
+    background: #f0f0f0;
+}
+
+.btn-primary {
+    background: #3498db;
+    border-color: #3498db;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-edit {
+    background: #27ae60;
+    border-color: #27ae60;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: #219a52;
+    border-color: #219a52;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    border-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+}
+
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background: #2c3e50;
+    color: #fff;
+}
+
+thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+tbody tr:hover {
+    background: #eef4fb;
+}
+
+tbody td {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+}
+
+td.actions {
+    display: flex;
+    gap: 8px;
+}
+
+td.empty {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+}
+
+/* フォーム */
+.form {
+    background: #fff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    max-width: 480px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.15s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+/* エラーボックス */
+.error-box {
+    background: #fdecea;
+    border: 1px solid #f5c6c6;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    color: #c0392b;
+    font-size: 0.9rem;
+}
+
+.error-box p {
+    margin: 0;
+}
+
+.error-box p + p {
+    margin-top: 4px;
+}
+
+/* 削除確認ボックス */
+.confirm-box {
+    background: #fff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    max-width: 480px;
+}
+
+.confirm-message {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.confirm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    box-shadow: none;
+}
+
+.confirm-table th {
+    width: 140px;
+    padding: 10px 12px;
+    background: #f4f6f9;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+.confirm-table td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border: 1px solid #e0e0e0;
+}
